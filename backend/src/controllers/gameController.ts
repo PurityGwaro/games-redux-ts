@@ -20,3 +20,14 @@ export const createGame = async (req: Request, res: Response) => {
         return res.status(500).json({ message: 'Couldn\'t create the game' }); 
     }
 };
+
+export const getGameById = async (req: Request, res: Response) => {
+    const gameId = req.params.id;
+    const game = await Game.findById(gameId);
+    try {
+        return res.status(200).json(game);
+    }
+    catch (error) {
+        return res.status(500).json({ message: 'Couldn\'t get the game' });
+    }
+}

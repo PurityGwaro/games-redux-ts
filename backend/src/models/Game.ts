@@ -2,6 +2,7 @@ import { Schema, model } from "mongoose";
 
 
 export interface Game {
+    name: string;
     address: string;
     numberOfPeople: number;
     date: Date;
@@ -12,6 +13,10 @@ export interface Game {
 
 const GameSchema = new Schema<Game>({
     //mongoose requires you to use upper case for the schema name
+    name: {
+        type: String,
+        required: true
+    },
     address: {
         type: String,
         required: true
